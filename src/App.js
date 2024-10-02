@@ -138,32 +138,33 @@ export default function App() {
         <ul>
           {guests.map((guest) => (
             <li
-              data-test-id="guest"
               key={`guest-${guest.id}`} // Unique key with prefix
               className={guest.attending ? 'attending' : ''}
             >
-              {guest.firstName} {guest.lastName}
-              {/* Checkbox with unique id */}
-              <input
-                id={`attending-${guest.id}`} // Unique ID
-                type="checkbox"
-                aria-label={`${guest.firstName} ${guest.lastName} attending status`}
-                checked={guest.attending}
-                onChange={() => toggleAttendance(guest.id)}
-                disabled={loading} // Disable checkbox when loading
-                style={{ marginLeft: '1rem' }}
-              />
-              {/* Label linked to the checkbox via htmlFor */}
-              <label htmlFor={`attending-${guest.id}`}>Attending</label>
-              {/* Remove Button */}
-              <button
-                onClick={() => removeGuest(guest.id)}
-                className="remove"
-                aria-label={`Remove ${guest.firstName} ${guest.lastName}`}
-                disabled={loading} // Disable button when loading
-              >
-                Remove
-              </button>
+              <div data-test-id="guest">
+                {guest.firstName} {guest.lastName}
+                {/* Checkbox with unique id */}
+                <input
+                  id={`attending-${guest.id}`} // Unique ID
+                  type="checkbox"
+                  aria-label={`${guest.firstName} ${guest.lastName} attending status`}
+                  checked={guest.attending}
+                  onChange={() => toggleAttendance(guest.id)}
+                  disabled={loading} // Disable checkbox when loading
+                  style={{ marginLeft: '1rem' }}
+                />
+                {/* Label linked to the checkbox via htmlFor */}
+                <label htmlFor={`attending-${guest.id}`}>Attending</label>
+                {/* Remove Button */}
+                <button
+                  onClick={() => removeGuest(guest.id)}
+                  className="remove"
+                  aria-label={`Remove ${guest.firstName} ${guest.lastName}`}
+                  disabled={loading} // Disable button when loading
+                >
+                  Remove
+                </button>
+              </div>
             </li>
           ))}
         </ul>
